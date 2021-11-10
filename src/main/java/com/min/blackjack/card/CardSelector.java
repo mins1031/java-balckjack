@@ -8,6 +8,6 @@ public class CardSelector {
 
 
     public List<Card> selectInitCard() {
-        return
+        return null;
     }
 }
