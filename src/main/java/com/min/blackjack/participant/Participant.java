@@ -1,6 +1,9 @@
 package com.min.blackjack.participant;
 
+import com.min.blackjack.card.Card;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Participant {
     private String name;
