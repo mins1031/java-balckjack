@@ -13,12 +13,31 @@ import java.util.stream.Collectors;
 public class GameTable {
     List<Participant> participants = new ArrayList<>();
     private final Dealer dealer = new Dealer();
+    private final String CARD_DRAW_VALUE = "y";
+    private final String NOT_CARD_DRAW_VALUE = "n";
 //    * 흐름도 : 참여자 신청 -> 카드 분배 -> 참가자 마다 카드 지급여부 -> 총합 통계 ->  결과 표기
 
     public void process() {
+        System.out.println("=============Game Start!=============");
         OutputView.guideParticipateGame();
         recruitParticipant(InputView.inputParticipantNames());
         allocateCards();
+        tourParticipantForQuestionDrawCard();
+    }
+
+    private void tourParticipantForQuestionDrawCard() {
+        for (Participant participant : participants) {
+            askAndDrawCard(participant);
+        }
+    }
+
+    private void askAndDrawCard(Participant participant) {
+        while(true) {
+            if (InputView.inputDrowCardYesOrNo(participant.getName()).equals(NOT_CARD_DRAW_VALUE)) {
+                break;
+            }
+            participant.getCards().add(dealer.addCard());
+        }
     }
 
     public void recruitParticipant(String rawParticipantNames) {

@@ -9,6 +9,7 @@ public class PorkerCardList {
     private List<Card> cardList = new ArrayList<>();
     private List<CardType> cardTypes = Arrays.asList(CardType.values());
     private List<CardValue> cardValues = Arrays.asList(CardValue.values());
+    private int totalCardCount = 52;
 
     {
         for (CardType cardType : cardTypes) {
@@ -19,9 +20,10 @@ public class PorkerCardList {
     public List<Card> getRandomCards(int requestCardNums) {
         List<Card> responseCard = new ArrayList<>();
         for (int i = 0; i < requestCardNums; i++) {
-            int randomCardPosition = (int) (Math.random() * 52);
+            int randomCardPosition = (int) (Math.random() * totalCardCount);
             responseCard.add(cardList.get(randomCardPosition));
             cardList.remove(randomCardPosition);
+            totalCardCount--;
         }
 
         return responseCard;

@@ -34,13 +34,6 @@ public class OutputView {
         System.out.println(name + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
     }
 
-    public static void printParticipantState(List<Participant> participants, Dealer dealer) {
-        participants.add(dealer);
-        for (Participant participant : participants) {
-            printParticipantCardName(participant);
-        }
-    }
-
     private static void printParticipantCardName(Participant participants) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(participants.getName() + "카드: ");

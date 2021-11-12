@@ -18,6 +18,10 @@ public class Participant {
         this.cards = cards;
     }
 
+    public void calculateCardNumSum() {
+        cards.stream().map(card -> card.getCardValue().getValue()).forEach(cardValue -> cardNumberSum += cardValue);
+    }
+
     public String getName() {
         return name;
     }
