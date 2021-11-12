@@ -1,4 +1,4 @@
-package com.min.blackjack.game;
+package com.min.blackjack.util;
 
 import java.util.Scanner;
 

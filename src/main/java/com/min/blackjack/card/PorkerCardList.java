@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PokerCardList {
+public class PorkerCardList {
     private List<Card> cardList = new ArrayList<>();
     private List<CardType> cardTypes = Arrays.asList(CardType.values());
     private List<CardValue> cardValues = Arrays.asList(CardValue.values());

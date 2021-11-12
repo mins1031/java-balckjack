@@ -1,6 +1,9 @@
 package com.min.blackjack.game;
 
+import com.min.blackjack.participant.Dealer;
 import com.min.blackjack.participant.Participant;
+import com.min.blackjack.util.InputView;
+import com.min.blackjack.util.OutputView;
 import com.min.blackjack.util.StringParser;
 
 import java.util.ArrayList;
@@ -9,18 +12,25 @@ import java.util.stream.Collectors;
 
 public class GameTable {
     List<Participant> participants = new ArrayList<>();
-//    * 흐름도 : 딜러생성 -> 참여자 신청 -> 카드 분배 -> 참가자 마다 카드 지급여부 -> 총합 통계 ->  결과 표기
+    private final Dealer dealer = new Dealer();
+//    * 흐름도 : 참여자 신청 -> 카드 분배 -> 참가자 마다 카드 지급여부 -> 총합 통계 ->  결과 표기
+
     public void process() {
-        recruitParticipant();
+        OutputView.guideParticipateGame();
+        recruitParticipant(InputView.inputParticipantNames());
         allocateCards();
     }
 
-    private void recruitParticipant() {
-        List<String> participantNames = StringParser.parseParticipantName(InputView.inputParticipantNames());
+    public void recruitParticipant(String rawParticipantNames) {
+        List<String> participantNames = StringParser.parseParticipantName(rawParticipantNames);
         participants.addAll(participantNames.stream().map(name -> new Participant(name)).collect(Collectors.toList()));
     }
 
-    private void allocateCards() {
-//        new CardSelector().select();
+    public void allocateCards() {
+        for (Participant participant : participants) {
+            participant.receiveInitCards(dealer.selectInitCard());
+        }
+        dealer.receiveInitCards(dealer.selectInitCard());
+        OutputView.guideAllocatedCard(participants);
     }
 }

@@ -13,10 +13,9 @@ class DealerTest {
     @DisplayName("selectInitCard메서드 테스트")
     void name() {
         //given
-        String dealerName = "dealer";
-        Dealer dealer = new Dealer(dealerName);
+        Dealer dealer = new Dealer();
         //when
-        List<Card> cards = Dealer.selectInitCard();
+        List<Card> cards = dealer.selectInitCard();
         //then
         Assertions.assertThat(cards).hasSize(2);
     }

@@ -13,4 +13,21 @@ public class Participant {
     public Participant(String name) {
         this.name = name;
     }
+
+    public void receiveInitCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public int getCardNumberSum() {
+        return cardNumberSum;
+    }
+
 }

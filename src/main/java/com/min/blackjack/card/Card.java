@@ -16,4 +16,9 @@ public class Card {
     public CardValue getCardValue() {
         return cardValue;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(cardValue) + String.valueOf(cardType);
+    }
 }

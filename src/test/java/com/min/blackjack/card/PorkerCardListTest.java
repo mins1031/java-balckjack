@@ -6,24 +6,24 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class PokerCardListTest {
+class PorkerCardListTest {
 
     @Test
     void name() {
-        PokerCardList pokerCardList = new PokerCardList();
+        PorkerCardList porkerCardList = new PorkerCardList();
 
-        Assertions.assertThat(pokerCardList.getCardList()).hasSize(52);
+        Assertions.assertThat(porkerCardList.getCardList()).hasSize(52);
     }
 
     @Test
     @DisplayName("getRandomCards 메서드 테스트")
     void name2() {
         int requestNum = 2;
-        PokerCardList pokerCardList = new PokerCardList();
+        PorkerCardList porkerCardList = new PorkerCardList();
 
-        List<Card> randomCards = pokerCardList.getRandomCards(requestNum);
+        List<Card> randomCards = porkerCardList.getRandomCards(requestNum);
 
         Assertions.assertThat(randomCards).hasSize(2);
-        Assertions.assertThat(pokerCardList.getCardList()).hasSize(50);
+        Assertions.assertThat(porkerCardList.getCardList()).hasSize(50);
     }
 }
