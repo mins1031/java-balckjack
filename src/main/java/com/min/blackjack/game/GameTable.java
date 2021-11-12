@@ -1,5 +1,6 @@
 package com.min.blackjack.game;
 
+import com.min.blackjack.card.Card;
 import com.min.blackjack.participant.Dealer;
 import com.min.blackjack.participant.Participant;
 import com.min.blackjack.util.InputView;
@@ -38,6 +39,7 @@ public class GameTable {
             }
             participant.getCards().add(dealer.addCard());
         }
+        OutputView.informCards(participant);
     }
 
     public void recruitParticipant(String rawParticipantNames) {

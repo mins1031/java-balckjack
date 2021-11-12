@@ -17,6 +17,7 @@ public class OutputView {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("딜러와 ");
         printParticipantName(participants, stringBuilder);
+        stringBuilder.append("에게 2장의 카드를 나누어 주었습니다.");
         System.out.println(stringBuilder);
     }
 
@@ -44,4 +45,15 @@ public class OutputView {
         System.out.println(stringBuilder);
     }
 
+    public static void informCards(Participant participant) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i =0; i< participant.getCards().size(); i++) {
+            stringBuilder.append(participant.getCards().get(i).toString());
+            if (i == participant.getCards().size() - 1) {
+                return;
+            }
+            stringBuilder.append(", ");
+        }
+        System.out.println("stringBuilder");
+    }
 }

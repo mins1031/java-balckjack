@@ -19,6 +19,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.valueOf(cardValue) + String.valueOf(cardType);
+        return String.valueOf(cardValue.getValue()) + String.valueOf(cardType.getName());
     }
 }
