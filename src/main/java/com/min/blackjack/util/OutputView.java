@@ -19,6 +19,9 @@ public class OutputView {
         printParticipantName(participants, stringBuilder);
         stringBuilder.append("에게 2장의 카드를 나누어 주었습니다.");
         System.out.println(stringBuilder);
+        for (Participant participant : participants) {
+            printParticipantCardName(participant);
+        }
     }
 
     private static void printParticipantName(List<Participant> participants, StringBuilder stringBuilder) {
@@ -39,7 +42,7 @@ public class OutputView {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(participants.getName() + "카드: ");
         for (Card card : participants.getCards()) {
-            stringBuilder.append(String.valueOf(card.getCardValue()) + String.valueOf(card.getCardType()));
+            stringBuilder.append(card.toString());
             stringBuilder.append(", ");
         }
         System.out.println(stringBuilder);
@@ -47,13 +50,14 @@ public class OutputView {
 
     public static void informCards(Participant participant) {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(participant.getName() + "카드: ");
         for (int i =0; i< participant.getCards().size(); i++) {
             stringBuilder.append(participant.getCards().get(i).toString());
             if (i == participant.getCards().size() - 1) {
-                return;
+                break;
             }
             stringBuilder.append(", ");
         }
-        System.out.println("stringBuilder");
+        System.out.println(stringBuilder);
     }
 }
