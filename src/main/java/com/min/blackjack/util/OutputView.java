@@ -48,7 +48,7 @@ public class OutputView {
         System.out.println(stringBuilder);
     }
 
-    public static void informCards(Participant participant) {
+    public static StringBuilder informCards(Participant participant) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(participant.getName() + "카드: ");
         for (int i =0; i< participant.getCards().size(); i++) {
@@ -58,11 +58,16 @@ public class OutputView {
             }
             stringBuilder.append(", ");
         }
-        System.out.println(stringBuilder);
+        return stringBuilder;
     }
 
     public static void informDrawCardByDealer() {
         System.out.println(GUIDANCE_DRAW_CARD_BY_DEALER);
+    }
+
+    public static void informParticipantsCardSum(Participant participant) {
+        StringBuilder cardSum = informCards(participant).append(" - ").append(participant.getCardNumberSum());
+        System.out.println(cardSum);
     }
 
 }

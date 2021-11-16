@@ -4,7 +4,6 @@ import com.min.blackjack.card.Card;
 import com.min.blackjack.card.PorkerCardList;
 import com.min.blackjack.util.OutputView;
 
-import javax.swing.table.TableRowSorter;
 import java.util.List;
 
 public class Dealer extends Participant {

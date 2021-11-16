@@ -24,6 +24,14 @@ public class GameTable {
         recruitParticipant(InputView.inputParticipantNames());
         allocateCards();
         tourParticipantForQuestionDrawCard();
+        informGameResult();
+    }
+
+    private void informGameResult() {
+        for (Participant participant : participants) {
+            OutputView.informParticipantsCardSum(participant);
+        }
+        OutputView.informParticipantsCardSum(dealer);
     }
 
     public void recruitParticipant(String rawParticipantNames) {
@@ -36,13 +44,12 @@ public class GameTable {
             participant.receiveInitCards(dealer.selectInitCard());
         }
         dealer.receiveInitCards(dealer.selectInitCard());
-        OutputView.guideAllocatedCard(participants);
     }
 
     private void tourParticipantForQuestionDrawCard() {
         for (Participant participant : participants) {
             askAndDrawCard(participant);
-            OutputView.informCards(participant);
+            System.out.println(OutputView.informCards(participant));
         }
 
         dealer.drawDealerCard();
