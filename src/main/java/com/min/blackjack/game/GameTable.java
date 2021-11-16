@@ -15,6 +15,7 @@ public class GameTable {
     private final Dealer dealer = new Dealer();
     public final static String CARD_DRAW_VALUE = "y";
     public final static String NOT_CARD_DRAW_VALUE = "n";
+    public final static int BLACKJACK_GOAL_SCORE = 21;
 //    * 흐름도 : 참여자 신청 -> 카드 분배 -> 참가자 마다 카드 지급여부 -> 총합 통계 ->  결과 표기
 
     public void process() {
@@ -43,6 +44,8 @@ public class GameTable {
             askAndDrawCard(participant);
             OutputView.informCards(participant);
         }
+
+        dealer.drawDealerCard();
     }
 
     private void askAndDrawCard(Participant participant) {
@@ -50,7 +53,7 @@ public class GameTable {
             if (InputView.inputDrawCardYesOrNo(participant.getName()).equals(NOT_CARD_DRAW_VALUE)) {
                 break;
             }
-            participant.getCards().add(dealer.addCard());
+            participant.addCard(dealer.drawNewCard());
         }
     }
 }

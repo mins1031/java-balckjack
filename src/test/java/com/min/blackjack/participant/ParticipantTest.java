@@ -15,7 +15,7 @@ class ParticipantTest {
         Dealer dealer = new Dealer();
         participant.receiveInitCards(dealer.selectInitCard());
         //when
-        participant.calculateCardNumSum();
+//        participant.calculateCardNumSum();
         //then
         List<Card> cards = participant.getCards();
         Assertions.assertThat(participant.getCardNumberSum()).isEqualTo(cards.get(0).getCardValue().getValue() + cards.get(1).getCardValue().getValue());

@@ -1,16 +1,16 @@
 package com.min.blackjack.util;
 
 import com.min.blackjack.card.Card;
-import com.min.blackjack.participant.Dealer;
 import com.min.blackjack.participant.Participant;
 
 import java.util.List;
 
 public class OutputView {
-    private static final String guidanceParticipateGame = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
+    private static final String GUIDANCE_PARTICIPATE_GAME = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
+    private static final String GUIDANCE_DRAW_CARD_BY_DEALER = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
 
     public static void guideParticipateGame() {
-        System.out.println(guidanceParticipateGame);
+        System.out.println(GUIDANCE_PARTICIPATE_GAME);
     }
 
     public static void guideAllocatedCard(List<Participant> participants) {
@@ -60,4 +60,9 @@ public class OutputView {
         }
         System.out.println(stringBuilder);
     }
+
+    public static void informDrawCardByDealer() {
+        System.out.println(GUIDANCE_DRAW_CARD_BY_DEALER);
+    }
+
 }
