@@ -1,6 +1,7 @@
 package com.min.blackjack.util;
 
 import com.min.blackjack.card.Card;
+import com.min.blackjack.participant.Dealer;
 import com.min.blackjack.participant.GameMember;
 import com.min.blackjack.participant.Participant;
 
@@ -71,4 +72,15 @@ public class OutputView {
         System.out.println(cardSum);
     }
 
+    public static void informGameResult(List<Participant> participants, Dealer dealer) {
+        System.out.println("## 최종 승패");
+        System.out.println(dealer.getName() + ": ");
+
+        dealer.getResults().stream().forEach(System.out::print);
+
+        for (Participant participant : participants) {
+            System.out.println(String.format("%s: %d", participant.getName(), participant.getResults().get(0)));
+        }
+    }
 }
+

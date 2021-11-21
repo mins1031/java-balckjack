@@ -10,7 +10,11 @@ public abstract class GameMember {
     public String name;
     public List<Card> cards = new ArrayList<>();
     public int cardNumberSum;
-    private List<Boolean> results;
+    private List<Boolean> results = new ArrayList<>();
+
+    public GameMember(String name) {
+        this.name = name;
+    }
 
     public void calculateCardNumSum(Card card) {
         if (card.getCardValue() == CardValue.ACE) {
@@ -31,12 +35,13 @@ public abstract class GameMember {
         cards.stream().map(card -> card.getCardValue().getValue()).forEach(cardValue -> cardNumberSum += cardValue);
     }
 
-    public void setResult(Boolean gameResult) {
-        results.add(gameResult);
+    public void addCard(Card card) {
+        cards.add(card);
+        calculateCardNumSum(card);
     }
 
-    public GameMember(String name) {
-        this.name = name;
+    public void setResult(Boolean gameResult) {
+        results.add(gameResult);
     }
 
     public String getName() {

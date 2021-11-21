@@ -1,12 +1,10 @@
 package com.min.blackjack.game;
 
 import com.min.blackjack.participant.Dealer;
-import com.min.blackjack.participant.GameMember;
 import com.min.blackjack.participant.Participant;
 import com.min.blackjack.util.InputView;
 import com.min.blackjack.util.OutputView;
 import com.min.blackjack.util.StringParser;
-import javafx.beans.binding.BooleanExpression;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +32,14 @@ public class GameTable {
 
     public void completeGame(List<Participant> participants, Dealer dealer) {
         int dealerScore = dealer.getCardNumberSum();
+
         for (Participant participant : participants) {
-            if (participant.getCardNumberSum() > BLACKJACK_GOAL_SCORE) {
-                participant.setResult();
-            }
+            participant.decideTotalResult(dealer, dealerScore);
         }
+
+        OutputView.informGameResult(participants, dealer);
     }
+
 
     public void recruitParticipant(String rawParticipantNames) {
         List<String> participantNames = StringParser.parseParticipantName(rawParticipantNames);
