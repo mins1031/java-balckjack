@@ -1,6 +1,7 @@
 package com.min.blackjack.util;
 
 import com.min.blackjack.card.Card;
+import com.min.blackjack.participant.GameMember;
 import com.min.blackjack.participant.Participant;
 
 import java.util.List;
@@ -48,12 +49,12 @@ public class OutputView {
         System.out.println(stringBuilder);
     }
 
-    public static StringBuilder informCards(Participant participant) {
+    public static StringBuilder informCards(GameMember gameMember) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(participant.getName() + "카드: ");
-        for (int i =0; i< participant.getCards().size(); i++) {
-            stringBuilder.append(participant.getCards().get(i).toString());
-            if (i == participant.getCards().size() - 1) {
+        stringBuilder.append(gameMember.getName() + "카드: ");
+        for (int i =0; i< gameMember.getCards().size(); i++) {
+            stringBuilder.append(gameMember.getCards().get(i).toString());
+            if (i == gameMember.getCards().size() - 1) {
                 break;
             }
             stringBuilder.append(", ");
@@ -65,8 +66,8 @@ public class OutputView {
         System.out.println(GUIDANCE_DRAW_CARD_BY_DEALER);
     }
 
-    public static void informParticipantsCardSum(Participant participant) {
-        StringBuilder cardSum = informCards(participant).append(" - ").append(participant.getCardNumberSum());
+    public static void informParticipantsCardSum(GameMember gameMember) {
+        StringBuilder cardSum = informCards(gameMember).append(" - ").append(gameMember.getCardNumberSum());
         System.out.println(cardSum);
     }
 

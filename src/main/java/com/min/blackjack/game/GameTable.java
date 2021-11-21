@@ -25,13 +25,7 @@ public class GameTable {
         allocateCards();
         tourParticipantForQuestionDrawCard();
         informGameResult();
-    }
 
-    private void informGameResult() {
-        for (Participant participant : participants) {
-            OutputView.informParticipantsCardSum(participant);
-        }
-        OutputView.informParticipantsCardSum(dealer);
     }
 
     public void recruitParticipant(String rawParticipantNames) {
@@ -56,11 +50,18 @@ public class GameTable {
     }
 
     private void askAndDrawCard(Participant participant) {
-        while(true) {
+        while (true) {
             if (InputView.inputDrawCardYesOrNo(participant.getName()).equals(NOT_CARD_DRAW_VALUE)) {
                 break;
             }
             participant.addCard(dealer.drawNewCard());
         }
+    }
+
+    private void informGameResult() {
+        for (Participant participant : participants) {
+            OutputView.informParticipantsCardSum(participant);
+        }
+        OutputView.informParticipantsCardSum(dealer);
     }
 }

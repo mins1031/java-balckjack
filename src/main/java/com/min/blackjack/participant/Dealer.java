@@ -6,7 +6,8 @@ import com.min.blackjack.util.OutputView;
 
 import java.util.List;
 
-public class Dealer extends Participant {
+public class Dealer extends GameMember {
+
     private static final int INIT_CARD_COUNT = 2;
     private static final int MORE_DRAW_CARD_COUNT = 1;
     private static final String DEALER_NAME = "DEALER";
@@ -22,6 +23,7 @@ public class Dealer extends Participant {
         List<Card> initCards = porkerCardList.getRandomCards(INIT_CARD_COUNT);
         return initCards;
     }
+
 
     public Card drawNewCard() {
         return porkerCardList.getRandomCards(MORE_DRAW_CARD_COUNT).get(0);

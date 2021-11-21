@@ -22,7 +22,6 @@ class PorkerCardListTest {
         PorkerCardList porkerCardList = new PorkerCardList();
 
         List<Card> randomCards = porkerCardList.getRandomCards(requestNum);
-
         Assertions.assertThat(randomCards).hasSize(2);
         Assertions.assertThat(porkerCardList.getCardList()).hasSize(50);
     }
