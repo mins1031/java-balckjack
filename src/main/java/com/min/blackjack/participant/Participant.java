@@ -7,11 +7,9 @@ import com.min.blackjack.game.GameTable;
 import java.util.List;
 
 public class Participant extends GameMember {
-
     public Participant(String name) {
         super(name);
     }
-
 
     public void addCard(Card card) {
         cards.add(card);

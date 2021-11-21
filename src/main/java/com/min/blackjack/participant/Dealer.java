@@ -24,7 +24,6 @@ public class Dealer extends GameMember {
         return initCards;
     }
 
-
     public Card drawNewCard() {
         return porkerCardList.getRandomCards(MORE_DRAW_CARD_COUNT).get(0);
     }

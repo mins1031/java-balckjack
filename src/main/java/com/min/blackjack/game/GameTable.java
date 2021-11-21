@@ -1,10 +1,12 @@
 package com.min.blackjack.game;
 
 import com.min.blackjack.participant.Dealer;
+import com.min.blackjack.participant.GameMember;
 import com.min.blackjack.participant.Participant;
 import com.min.blackjack.util.InputView;
 import com.min.blackjack.util.OutputView;
 import com.min.blackjack.util.StringParser;
+import javafx.beans.binding.BooleanExpression;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,8 @@ public class GameTable {
     public final static String CARD_DRAW_VALUE = "y";
     public final static String NOT_CARD_DRAW_VALUE = "n";
     public final static int BLACKJACK_GOAL_SCORE = 21;
+    public final static Boolean WIN = true;
+    public final static Boolean LOSS = false;
 //    * 흐름도 : 참여자 신청 -> 카드 분배 -> 참가자 마다 카드 지급여부 -> 총합 통계 ->  결과 표기
 
     public void process() {
@@ -23,9 +27,18 @@ public class GameTable {
         OutputView.guideParticipateGame();
         recruitParticipant(InputView.inputParticipantNames());
         allocateCards();
-        tourParticipantForQuestionDrawCard();
+        askDrawCardToParticipant();
         informGameResult();
+        completeGame(participants, dealer);
+    }
 
+    public void completeGame(List<Participant> participants, Dealer dealer) {
+        int dealerScore = dealer.getCardNumberSum();
+        for (Participant participant : participants) {
+            if (participant.getCardNumberSum() > BLACKJACK_GOAL_SCORE) {
+                participant.setResult();
+            }
+        }
     }
 
     public void recruitParticipant(String rawParticipantNames) {
@@ -40,7 +53,7 @@ public class GameTable {
         dealer.receiveInitCards(dealer.selectInitCard());
     }
 
-    private void tourParticipantForQuestionDrawCard() {
+    private void askDrawCardToParticipant() {
         for (Participant participant : participants) {
             askAndDrawCard(participant);
             System.out.println(OutputView.informCards(participant));
