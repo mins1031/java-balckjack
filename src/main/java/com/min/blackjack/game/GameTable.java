@@ -28,17 +28,6 @@ public class GameTable {
         completeGame(participants, dealer);
     }
 
-    public void completeGame(List<Participant> participants, Dealer dealer) {
-        int dealerScore = dealer.getCardNumberSum();
-
-        for (Participant participant : participants) {
-            participant.decideTotalResult(dealer, dealerScore);
-        }
-
-        OutputView.informGameResult(participants, dealer);
-    }
-
-
     public void recruitParticipant(String rawParticipantNames) {
         List<String> participantNames = StringParser.parseParticipantName(rawParticipantNames);
         participants.addAll(participantNames.stream().map(name -> new Participant(name)).collect(Collectors.toList()));
@@ -74,5 +63,14 @@ public class GameTable {
             OutputView.informParticipantsCardSum(participant);
         }
         OutputView.informParticipantsCardSum(dealer);
+    }
+
+    public void completeGame(List<Participant> participants, Dealer dealer) {
+        int dealerScore = dealer.getCardNumberSum();
+
+        for (Participant participant : participants) {
+            participant.decideTotalResult(dealer, dealerScore);
+        }
+        OutputView.informGameResult(participants, dealer);
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 public class OutputView {
     private static final String GUIDANCE_PARTICIPATE_GAME = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
     private static final String GUIDANCE_DRAW_CARD_BY_DEALER = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
+    private static final String COMMA = ", ";
 
     public static void guideParticipateGame() {
         System.out.println(GUIDANCE_PARTICIPATE_GAME);
@@ -32,7 +33,7 @@ public class OutputView {
             if (i == (participants.size() - 1)) {
                 break;
             }
-            stringBuilder.append(", ");
+            stringBuilder.append(COMMA);
         }
     }
 
@@ -45,7 +46,7 @@ public class OutputView {
         stringBuilder.append(participants.getName() + "카드: ");
         for (Card card : participants.getCards()) {
             stringBuilder.append(card.toString());
-            stringBuilder.append(", ");
+            stringBuilder.append(COMMA);
         }
         System.out.println(stringBuilder);
     }
@@ -53,12 +54,12 @@ public class OutputView {
     public static StringBuilder informCards(GameMember gameMember) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(gameMember.getName() + "카드: ");
-        for (int i =0; i< gameMember.getCards().size(); i++) {
+        for (int i = 0; i < gameMember.getCards().size(); i++) {
             stringBuilder.append(gameMember.getCards().get(i).toString());
             if (i == gameMember.getCards().size() - 1) {
                 break;
             }
-            stringBuilder.append(", ");
+            stringBuilder.append(COMMA);
         }
         return stringBuilder;
     }
