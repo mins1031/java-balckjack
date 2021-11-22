@@ -16,8 +16,6 @@ public class GameTable {
     public final static String CARD_DRAW_VALUE = "y";
     public final static String NOT_CARD_DRAW_VALUE = "n";
     public final static int BLACKJACK_GOAL_SCORE = 21;
-    public final static Boolean WIN = true;
-    public final static Boolean LOSS = false;
 //    * 흐름도 : 참여자 신청 -> 카드 분배 -> 참가자 마다 카드 지급여부 -> 총합 통계 ->  결과 표기
 
     public void process() {

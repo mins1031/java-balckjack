@@ -2,6 +2,7 @@ package com.min.blackjack.participant;
 
 import com.min.blackjack.card.Card;
 import com.min.blackjack.card.CardValue;
+import com.min.blackjack.game.GameResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public abstract class GameMember {
     public String name;
     public List<Card> cards = new ArrayList<>();
     public int cardNumberSum;
-    private List<Boolean> results = new ArrayList<>();
+    public List<GameResult> results = new ArrayList<>();
 
     public GameMember(String name) {
         this.name = name;
@@ -19,6 +20,7 @@ public abstract class GameMember {
     public void calculateCardNumSum(Card card) {
         if (card.getCardValue() == CardValue.ACE) {
             distinguishAceValue();
+            return;
         }
         cardNumberSum += card.getCardValue().getValue();
     }
@@ -26,6 +28,7 @@ public abstract class GameMember {
     private void distinguishAceValue() {
         if (cardNumberSum > 11) {
             cardNumberSum++;
+            return;
         }
         cardNumberSum += 10;
     }
@@ -40,7 +43,7 @@ public abstract class GameMember {
         calculateCardNumSum(card);
     }
 
-    public void setResult(Boolean gameResult) {
+    public void setResult(GameResult gameResult) {
         results.add(gameResult);
     }
 
@@ -56,7 +59,7 @@ public abstract class GameMember {
         return cardNumberSum;
     }
 
-    public List<Boolean> getResults() {
+    public List<GameResult> getResults() {
         return results;
     }
 }

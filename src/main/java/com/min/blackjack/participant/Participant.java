@@ -2,6 +2,7 @@ package com.min.blackjack.participant;
 
 import com.min.blackjack.card.Card;
 import com.min.blackjack.card.CardValue;
+import com.min.blackjack.game.GameResult;
 import com.min.blackjack.game.GameTable;
 
 import java.util.List;
@@ -13,18 +14,18 @@ public class Participant extends GameMember {
     
     public void decideTotalResult(Dealer dealer, int dealerScore) {
         if (dealerScore > GameTable.BLACKJACK_GOAL_SCORE) {
-            dealer.setResult(GameTable.LOSS);
+            dealer.setResult(GameResult.LOSS);
             if (this.getCardNumberSum() <= GameTable.BLACKJACK_GOAL_SCORE) {
-                this.setResult(GameTable.WIN);
+                this.setResult(GameResult.WIN);
                 return;
             }
-            this.setResult(GameTable.LOSS);
+            this.setResult(GameResult.LOSS);
             return;
         }
 
         if (this.getCardNumberSum() > GameTable.BLACKJACK_GOAL_SCORE) {
-            this.setResult(GameTable.LOSS);
-            dealer.setResult(GameTable.WIN);
+            this.setResult(GameResult.LOSS);
+            dealer.setResult(GameResult.WIN);
             return;
         }
 
@@ -35,13 +36,13 @@ public class Participant extends GameMember {
 
     private void decideWinOrLoss(Dealer dealer, int dealerScore) {
         if (this.getCardNumberSum() < dealerScore) {
-            this.setResult(GameTable.LOSS);
-            dealer.setResult(GameTable.WIN);
+            this.setResult(GameResult.LOSS);
+            dealer.setResult(GameResult.WIN);
         }
 
         if (this.getCardNumberSum() >= dealerScore) {
-            this.setResult(GameTable.WIN);
-            dealer.setResult(GameTable.LOSS);
+            this.setResult(GameResult.WIN);
+            dealer.setResult(GameResult.LOSS);
         }
     }
 

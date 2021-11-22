@@ -2,6 +2,7 @@ package com.min.blackjack.participant;
 
 import com.min.blackjack.card.Card;
 import com.min.blackjack.card.PorkerCardList;
+import com.min.blackjack.game.GameResult;
 import com.min.blackjack.util.OutputView;
 
 import java.util.List;
@@ -38,5 +39,20 @@ public class Dealer extends GameMember {
             getCards().add(drawNewCard);
             calculateCardNumSum(drawNewCard);
         }
+    }
+
+    public String collectGameResult() {
+        int winCount = 0;
+        int lossCount = 0;
+
+        for (GameResult result : this.results) {
+            if (result == GameResult.WIN) {
+                winCount++;
+                continue;
+            }
+            lossCount++;
+        }
+
+        return String.format("%d승 %d패", winCount, lossCount);
     }
 }

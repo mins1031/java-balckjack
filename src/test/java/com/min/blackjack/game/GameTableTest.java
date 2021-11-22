@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 class GameTableTest {
+
     @Test
     @DisplayName("초기카드 2장 참가자 별로 배분 테스트")
     void name() {
@@ -51,10 +52,10 @@ class GameTableTest {
         GameTable gameTable = new GameTable();
         gameTable.completeGame(participants, dealer);
         //then
-        Assertions.assertThat(participants.get(0).getResults().get(0)).isTrue();
-        Assertions.assertThat(participants.get(1).getResults().get(0)).isTrue();
-        Assertions.assertThat(dealer.getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(1)).isFalse();
+        Assertions.assertThat(participants.get(0).getResults().get(0)).isEqualTo(GameResult.WIN);
+        Assertions.assertThat(participants.get(1).getResults().get(0)).isEqualTo(GameResult.WIN);
+        Assertions.assertThat(dealer.getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(1)).isEqualTo(GameResult.LOSS);
     }
 
     @Test
@@ -79,10 +80,10 @@ class GameTableTest {
         GameTable gameTable = new GameTable();
         gameTable.completeGame(participants, dealer);
         //then
-        Assertions.assertThat(participants.get(0).getResults().get(0)).isTrue();
-        Assertions.assertThat(participants.get(1).getResults().get(0)).isTrue();
-        Assertions.assertThat(dealer.getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(1)).isFalse();
+        Assertions.assertThat(participants.get(0).getResults().get(0)).isEqualTo(GameResult.WIN);
+        Assertions.assertThat(participants.get(1).getResults().get(0)).isEqualTo(GameResult.WIN);
+        Assertions.assertThat(dealer.getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(1)).isEqualTo(GameResult.LOSS);
     }
 
     @Test
@@ -108,10 +109,10 @@ class GameTableTest {
         GameTable gameTable = new GameTable();
         gameTable.completeGame(participants, dealer);
         //then
-        Assertions.assertThat(participants.get(0).getResults().get(0)).isTrue();
-        Assertions.assertThat(participants.get(1).getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(1)).isFalse();
+        Assertions.assertThat(participants.get(0).getResults().get(0)).isEqualTo(GameResult.WIN);
+        Assertions.assertThat(participants.get(1).getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(1)).isEqualTo(GameResult.LOSS);
     }
 
     @Test
@@ -136,10 +137,10 @@ class GameTableTest {
         GameTable gameTable = new GameTable();
         gameTable.completeGame(participants, dealer);
         //then
-        Assertions.assertThat(participants.get(0).getResults().get(0)).isTrue();
-        Assertions.assertThat(participants.get(1).getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(1)).isTrue();
+        Assertions.assertThat(participants.get(0).getResults().get(0)).isEqualTo(GameResult.WIN);
+        Assertions.assertThat(participants.get(1).getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(1)).isEqualTo(GameResult.WIN);
     }
 
     @Test
@@ -164,10 +165,10 @@ class GameTableTest {
         GameTable gameTable = new GameTable();
         gameTable.completeGame(participants, dealer);
         //then
-        Assertions.assertThat(participants.get(0).getResults().get(0)).isTrue();
-        Assertions.assertThat(participants.get(1).getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(1)).isTrue();
+        Assertions.assertThat(participants.get(0).getResults().get(0)).isEqualTo(GameResult.WIN);
+        Assertions.assertThat(participants.get(1).getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(1)).isEqualTo(GameResult.WIN);
     }
 
     @Test
@@ -192,10 +193,11 @@ class GameTableTest {
         GameTable gameTable = new GameTable();
         gameTable.completeGame(participants, dealer);
         //then
-        Assertions.assertThat(participants.get(0).getResults().get(0)).isTrue();
-        Assertions.assertThat(participants.get(1).getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(0)).isFalse();
-        Assertions.assertThat(dealer.getResults().get(1)).isTrue();
+
+        Assertions.assertThat(participants.get(0).getResults().get(0)).isEqualTo(GameResult.WIN);
+        Assertions.assertThat(participants.get(1).getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(0)).isEqualTo(GameResult.LOSS);
+        Assertions.assertThat(dealer.getResults().get(1)).isEqualTo(GameResult.WIN);
     }
 
 

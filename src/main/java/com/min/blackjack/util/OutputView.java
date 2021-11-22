@@ -74,12 +74,11 @@ public class OutputView {
 
     public static void informGameResult(List<Participant> participants, Dealer dealer) {
         System.out.println("## 최종 승패");
-        System.out.println(dealer.getName() + ": ");
-
-        dealer.getResults().stream().forEach(System.out::print);
+        System.out.print(dealer.getName() + ": ");
+        System.out.println(dealer.collectGameResult());
 
         for (Participant participant : participants) {
-            System.out.println(String.format("%s: %d", participant.getName(), participant.getResults().get(0)));
+            System.out.println(String.format("%s: 1%s", participant.getName(), participant.getResults().get(0).getResultName()));
         }
     }
 }
